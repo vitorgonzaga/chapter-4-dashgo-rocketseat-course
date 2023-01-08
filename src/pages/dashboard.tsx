@@ -9,7 +9,7 @@ const Chart = dynamic(() => import('react-apexcharts'),{
 
 const options = {
   chart: {
-    type: "area",
+    // type: "area",
     toolbar: {
       show: false,
     },
@@ -71,13 +71,14 @@ export default function Dashboard() {
       <Sidebar />
       <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
         <Box
-          p="8"
+          p={["6", "8"]}
           bg="gray.800"
           borderRadius={8}
           pb="4"
         >
           <Text fontSize="lg" mb="4">Inscritos da semana</Text>
           <Chart
+            // @ts-ignore
             options={options}
             series={series}
             type="area"
@@ -85,13 +86,14 @@ export default function Dashboard() {
           />
         </Box>
         <Box
-          p="8"
+          p={["6", "8"]}
           bg="gray.800"
           borderRadius={8}
           pb="4"
         >
           <Text fontSize="lg" mb="4">Taxa de abertura</Text>
           <Chart
+            // @ts-ignore
             options={options}
             series={series}
             type="area"
