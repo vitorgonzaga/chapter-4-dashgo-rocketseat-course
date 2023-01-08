@@ -1,5 +1,6 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
+import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
 
 const theme = extendTheme({
   colors: {
@@ -33,7 +34,9 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <SidebarDrawerProvider>
+        <Component {...pageProps} />
+      </SidebarDrawerProvider>
     </ChakraProvider>
   )
 }
