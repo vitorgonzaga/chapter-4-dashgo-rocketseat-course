@@ -9,7 +9,9 @@ const Chart = dynamic(() => import('react-apexcharts'),{
 
 const options = {
   chart: {
-    // type: "area",
+    type: "area",
+    height: 175,
+    width: 500,
     toolbar: {
       show: false,
     },
@@ -83,6 +85,7 @@ export default function Dashboard() {
             series={series}
             type="area"
             height={160}
+            width={500}
           />
         </Box>
         <Box
@@ -98,6 +101,7 @@ export default function Dashboard() {
             series={series}
             type="area"
             height={160}
+            width={500}
           />
         </Box>
 
