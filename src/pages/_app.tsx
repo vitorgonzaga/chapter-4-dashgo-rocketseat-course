@@ -1,6 +1,15 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { makeServer } from "../services/mirage/mirage"
 import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
+import { ReactQueryDevtools } from 'react-query/devtools'
+
+if (process.env.NODE_ENV === "development") {
+  makeServer()
+}
+
+const queryClient = new QueryClient()
 
 const theme = extendTheme({
   colors: {
@@ -33,10 +42,15 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <SidebarDrawerProvider>
-        <Component {...pageProps} />
-      </SidebarDrawerProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient} >
+      <ChakraProvider theme={theme}>
+          <SidebarDrawerProvider>
+            <Component {...pageProps} />
+          </SidebarDrawerProvider>
+      </ChakraProvider>
+
+      <ReactQueryDevtools />
+
+    </QueryClientProvider>
   )
 }
