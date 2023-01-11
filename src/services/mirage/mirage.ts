@@ -61,7 +61,7 @@ export function makeServer() {
         //   }
         // ))
 
-        console.log('users', users, typeof users)
+        // console.log('users', users, typeof users)
 
         // const resp = Object.entries(users).slice(pageStart, pageEnd).map(user => user[1])
         // console.log('resp', resp, typeof resp)
