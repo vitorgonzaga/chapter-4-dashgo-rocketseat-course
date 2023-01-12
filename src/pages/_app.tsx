@@ -4,12 +4,11 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { makeServer } from "../services/mirage/mirage"
 import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { queryClient } from '../services/queryClient'
 
 if (process.env.NODE_ENV === "development") {
   makeServer()
 }
-
-const queryClient = new QueryClient()
 
 const theme = extendTheme({
   colors: {
